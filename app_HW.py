@@ -3,8 +3,6 @@ import numpy as np
 import altair as alt
 import pandas as pd
 
-
-df_repair = pd.read_csv('repair_data.csv')
 df_sales = pd.read_csv('sales_data.csv')
 
 
