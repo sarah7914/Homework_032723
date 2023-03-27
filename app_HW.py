@@ -44,6 +44,6 @@ st.altair_chart((barchart + text), use_container_width=True)
 
 #Chart 2
 
-locations = df_sales['Manufacturing_Location'].unique().tolist()
+locations = df_sales['Locations'].unique().tolist()
 
-location_pick = st.select_slider('Select a manufacturing location', options=locations
+location_pick = st.select_slider('Select a manufacturing location', options=locations)
