@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import altair as alt
 import pandas as pd
+from altair import datum
 
 df_sales = pd.read_csv('sales_data.csv')
 
@@ -50,13 +51,13 @@ locations = df_sales['Location'].unique().tolist()
 st.subheader('_Select a refrigerator manufacturing location to view the quantity produced in the last 2 years_')
 location_pick = st.select_slider('Slide the red dot to select a manufacturing location', options=locations)
 
-select_location = alt.selection_multi(fields=['Location'], bind=location_pick)
+select_location = alt.selection_single(fields=['Location'])
 
 barchart2 = alt.Chart(df_sales, title = f'Refrigerators Produced from {location_pick} in the Last 2 Years').mark_bar().encode(
     x=alt.X('Year:O', axis=alt.Axis(labelAngle=0)),
     y=alt.Y('sum(Quantity):Q', title='Quantity Produced'),
     tooltip=alt.Tooltip('sum(Quantity):Q', format=",.0f")
-    ).add_selection(select_location).transform_filter(select_location)
+    ).transform_filter(select_location)
 
 text2 = barchart2.mark_text(
     align='left',
