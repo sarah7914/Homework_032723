@@ -25,12 +25,11 @@ df_new = pd.DataFrame(data=x_sales)
 df_new['y_sales']=y_sales
 df_new['style']=style_choice
 
-barchart = alt.Chart(df_new).mark_bar().encode(
+barchart = alt.Chart(df_new, title = f'{style_choice} Refrigerators Sold in the Last 2 Years').mark_bar().encode(
     x='Year:O',
-    y='sum(y_sales):Q', 
-    color='style:O'
-)
-
+    y=alt.Y('sum(y_sales):Q', title='Quantity Sold'),
+    color='styles:O'
+    )
 
 text = barchart.mark_text(
     align='left',
