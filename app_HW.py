@@ -48,13 +48,13 @@ st.altair_chart((barchart + text), use_container_width=True)
 locations = df_sales['Location'].unique().tolist()
 
 st.subheader('_Select a refrigerator manufacturing location to view the quantity produced in the last 2 years_')
-location_pick = st.select_slider('Select a manufacturing location', options=locations)
+location_pick = st.select_slider('Slide the red dot to select a manufacturing location', options=locations)
 
 barchart2 = alt.Chart(df_sales, title = f'Refrigerators Produced from {location_pick} in the Last 2 Years').mark_bar().encode(
     x=alt.X('Year:O', axis=alt.Axis(labelAngle=0)),
     y=alt.Y('sum(Quantity):Q', title='Quantity Produced'),
     tooltip=alt.Tooltip('sum(Quantity):Q', format=",.0f")
-    )
+    ).transform_filter(df_sales.Location==location_pick)
 
 text2 = barchart2.mark_text(
     align='left',
