@@ -38,4 +38,13 @@ text = barchart.mark_text(
     text=alt.Y('sum(y_sales):Q', title='Quantity Sold')
 )
 
-st.altair_chart((barchart + text), use_container_width=True)
+tick = alt.Chart(df_sales).mark_tick(
+    color='red',
+    thickness=2,
+    size=40 * 0.9
+).encode(
+    x='Year:O',
+    y=alt.Y('mean(Quantity):Q')
+)
+
+st.altair_chart((barchart + text + tick), use_container_width=True)
