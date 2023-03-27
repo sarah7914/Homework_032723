@@ -33,9 +33,9 @@ barchart = alt.Chart(df_new, title = f'{style_choice} Refrigerators Sold in the 
 text = barchart.mark_text(
     align='left',
     baseline='middle',
-    dx=10  # Nudges text to right so it doesn't appear on top of the bar
+    dy=-5
 ).encode(
-    text='sum(y_sales):Q'
+    text=alt.Y('sum(y_sales):Q', title='Quantity Sold')
 )
 
 st.altair_chart((barchart + text), use_container_width=True)
