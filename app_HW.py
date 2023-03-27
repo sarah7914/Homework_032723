@@ -56,6 +56,7 @@ location_pick = st.select_slider('Slide the red dot to select a manufacturing lo
 barchart2 = alt.Chart(df_sales, title = f'Refrigerators Produced from {location_pick} in the Last 2 Years').mark_bar().encode(
     x=alt.X('Year:O', axis=alt.Axis(labelAngle=0)),
     y=alt.Y('sum(Quantity):Q', title='Quantity Produced'),
+    color=alt.Color('Location'),
     tooltip=alt.Tooltip('sum(Quantity):Q', format=",.0f")
     ).transform_filter(datum.Location==location_pick)
 
