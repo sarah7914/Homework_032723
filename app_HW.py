@@ -11,6 +11,7 @@ st.set_page_config(layout="wide")
 st.image('https://5ypbvxa39ihl3fage541b0i.blob.core.windows.net/media/Frigidaire_Media/Logo/elements-logos-color.svg', width=250) 
 st.title('2022 Refrigerator Warranty Claim Data')
 
+#Chart 1
 types = df_sales['Product_Type'].unique().tolist()
 styles = df_sales['Product_Styles'].unique().tolist()
 
@@ -39,5 +40,10 @@ text = barchart.mark_text(
     text=alt.Y('sum(y_sales):Q', format=",.0f", title='Quantity Sold')
 )
 
-
 st.altair_chart((barchart + text), use_container_width=True)
+
+#Chart 2
+
+locations = df_sales['Manufacturing_Location'].unique().tolist()
+
+location_pick = st.select_slider('Select a manufacturing location', options=locations
