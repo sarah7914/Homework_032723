@@ -19,7 +19,7 @@ styles = df_sales['Product_Styles'].unique().tolist()
 
 type_choice = st.sidebar.selectbox('Select your refrigerator type:', types)
 styles = df_sales['Product_Styles'].loc[df_sales['Product_Type']==type_choice].unique()
-style_choice = st.sidebar.selectbox('Select your refrigerator style', styles) 
+style_choice = st.sidebar.selectbox('Select your refrigerator style:', styles) 
 
 x_sales=df_sales['Year'].loc[df_sales['Product_Styles']==style_choice]
 y_sales=df_sales['Quantity'].loc[df_sales['Product_Styles']==style_choice]
@@ -49,7 +49,7 @@ st.altair_chart((barchart + text), use_container_width=True)
 locations = df_sales['Location'].unique().tolist()
 
 st.subheader('_Select a refrigerator manufacturing location to view the quantity produced in the last 2 years_')
-location_pick = st.select_slider('Slide the red dot to select a manufacturing location', options=locations)
+location_pick = st.select_slider('Slide the red dot to select a manufacturing location:', options=locations)
 
 #select_location = alt.selection_multi(fields=location_pick)
 
