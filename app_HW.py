@@ -25,11 +25,6 @@ df_new = pd.DataFrame(data=x_sales)
 df_new['y_sales']=y_sales
 df_new['style']=style_choice
 
-#barchart = alt.Chart(df_new, title = f'{style_choice} Refrigerators Sold in the Last 2 Years').mark_bar().encode(
- #   x='Year:O',
-  #  y=alt.Y('sum(y_sales):Q', title='Quantity Sold')
-   # )
-
 barchart = alt.Chart(df_new, title = f'{style_choice} Refrigerators Sold in the Last 2 Years').mark_bar().encode(
     x=alt.X('Year:O', axis=alt.Axis(labelAngle=0)),
     y=alt.Y('sum(y_sales):Q', title='Quantity Sold'),
@@ -45,4 +40,4 @@ text = barchart.mark_text(
 )
 
 
-st.altair_chart((barchart), use_container_width=True)
+st.altair_chart((barchart + text), use_container_width=True)
