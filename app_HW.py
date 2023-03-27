@@ -54,7 +54,7 @@ barchart2 = alt.Chart(df_sales, title = f'Refrigerators Produced from {location_
     x=alt.X('Year:O', axis=alt.Axis(labelAngle=0)),
     y=alt.Y('sum(Quantity):Q', title='Quantity Produced'),
     tooltip=alt.Tooltip('sum(Quantity):Q', format=",.0f")
-    ).transform_filter(location_pick)
+    ).add_selection(location_pick).transform_filter(location_pick)
 
 text2 = barchart2.mark_text(
     align='left',
