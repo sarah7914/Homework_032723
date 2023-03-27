@@ -36,21 +36,13 @@ barchart = alt.Chart(df_new, title = f'{style_choice} Refrigerators Sold in the 
     tooltip=alt.Tooltip('sum(y_sales):Q', format=",.0f")
     )
 
-#text = barchart.mark_text(
-#    align='left',
-#    baseline='middle',
-#    dy=-10
-#).encode(
-#    text=alt.Y('sum(y_sales):Q', title='Quantity Sold')
-#)
-
-tick = alt.Chart(df_sales).mark_tick(
-    color='red',
-    thickness=2,
-    size=40 * 0.9
+text = barchart.mark_text(
+    align='left',
+    baseline='middle',
+    dy=-10
 ).encode(
-    x='Year:O',
-    y=alt.Y('sum(Quantity):Q')
+    text=alt.Y('sum(y_sales):Q', format=",.0f", title='Quantity Sold')
 )
+
 
 st.altair_chart((barchart), use_container_width=True)
