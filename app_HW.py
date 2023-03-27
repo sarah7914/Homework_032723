@@ -47,4 +47,4 @@ tick = alt.Chart(df_sales).mark_tick(
     y=alt.Y('sum(Quantity):Q')
 )
 
-st.altair_chart((barchart + text + tick), use_container_width=True)
+st.altair_chart((barchart + text), use_container_width=True)
