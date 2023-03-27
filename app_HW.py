@@ -11,8 +11,8 @@ st.set_page_config(layout="wide")
 st.image('https://5ypbvxa39ihl3fage541b0i.blob.core.windows.net/media/Frigidaire_Media/Logo/elements-logos-color.svg', width=250) 
 st.title('2022 Refrigerator Warranty Claim Data')
 
-types = df_sales['Product_Type'].drop_duplicates()
-styles = df_sales['Product_Styles'].drop_duplicates()
+types = df_sales['Product_Type'].unique().tolist()
+styles = df_sales['Product_Styles'].unique().tolist()
 
 type_choice = st.sidebar.selectbox('Select your refrigerator type:', types)
 styles = df_sales['Product_Styles'].loc[df_sales['Product_Type']==type_choice].unique()
