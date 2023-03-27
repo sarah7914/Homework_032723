@@ -27,8 +27,7 @@ df_new['style']=style_choice
 
 barchart = alt.Chart(df_new, title = f'{style_choice} Refrigerators Sold in the Last 2 Years').mark_bar().encode(
     x='Year:O',
-    y=alt.Y('sum(y_sales):Q', title='Quantity Sold'),
-    color='styles:O'
+    y=alt.Y('sum(y_sales):Q', title='Quantity Sold')
     )
 
 text = barchart.mark_text(
