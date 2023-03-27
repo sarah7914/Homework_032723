@@ -33,7 +33,7 @@ barchart = alt.Chart(df_new, title = f'{style_choice} Refrigerators Sold in the 
 text = barchart.mark_text(
     align='left',
     baseline='middle',
-    dy=-5
+    dy=-10
 ).encode(
     text=alt.Y('sum(y_sales):Q', title='Quantity Sold')
 )
